@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdalla Mohamed - Electronics & Communications Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .cyber-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(circle at 20% 80%, #00ff88 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, #0088ff 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, #ff0088 0%, transparent 50%);
+            opacity: 0.1;
+            animation: bgShift 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgShift {
+            0% { transform: translateX(-20px) translateY(-20px); }
+            100% { transform: translateX(20px) translateY(20px); }
+        }
+
+        /* Grid overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Futuristic Header */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 100px;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #00ff88, #0088ff, #ff0088);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+            text-shadow: 0 0 50px rgba(0, 255, 136, 0.3);
+        }
+
+        @keyframes titleGlow {
+            0% { filter: brightness(1) drop-shadow(0 0 20px rgba(0, 255, 136, 0.4)); }
+            100% { filter: brightness(1.2) drop-shadow(0 0 40px rgba(0, 255, 136, 0.8)); }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 30px;
+            color: #a0a0a0;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #707070;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Contact chips */
+        .contact-chips {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contact-chip {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            color: #00ff88;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-chip::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .contact-chip:hover::before {
+            left: 100%;
+        }
+
+        .contact-chip:hover {
+            background: rgba(0, 255, 136, 0.2);
+            border-color: #00ff88;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Section styling */
+        .section {
+            margin-bottom: 120px;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #a0a0a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #00ff88, #0088ff);
+            border-radius: 2px;
+        }
+
+        /* Unique project cards - Hexagonal design */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            perspective: 1000px;
+        }
+
+        .project-hex {
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 136, 255, 0.05));
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(20px);
+            overflow: hidden;
+        }
+
+        .project-hex::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00ff88, #0088ff, #ff0088);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .project-hex:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-hex:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            border-color: rgba(0, 255, 136, 0.5);
+            box-shadow: 0 25px 60px rgba(0, 255, 136, 0.15);
+        }
+
+        .project-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00ff88, #0088ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #000;
+            font-size: 1.2rem;
+        }
+
+        .project-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .project-subtitle {
+            color: #00ff88;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-description {
+            color: #b0b0b0;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        /* Tech tags with neon effect */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-tag {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #00ff88;
+            color: #00ff88;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-tag:hover {
+            background: rgba(0, 255, 136, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+            transform: scale(1.05);
+        }
+
+        /* Skills section - Circuit board style */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-board {
+            background: radial-gradient(circle at center, rgba(0, 255, 136, 0.03), rgba(0, 0, 0, 0.5));
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .skill-board::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00ff88, #0088ff, #ff0088, #00ff88);
+            border-radius: 15px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-board:hover::before {
+            opacity: 1;
+        }
+
+        .skill-board:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .skill-chip {
+            background: rgba(0, 136, 255, 0.1);
+            border: 1px solid rgba(0, 136, 255, 0.3);
+            color: #0088ff;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-chip:hover {
+            background: rgba(0, 136, 255, 0.2);
+            border-color: #0088ff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 136, 255, 0.3);
+        }
+
+        /* Education & Certifications */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+        }
+
+        .edu-card {
+            background: linear-gradient(135deg, rgba(255, 0, 136, 0.05), rgba(0, 136, 255, 0.05));
+            border: 1px solid rgba(255, 0, 136, 0.2);
+            border-radius: 20px;
+            padding: 35px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .edu-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 0, 136, 0.5);
+            box-shadow: 0 20px 40px rgba(255, 0, 136, 0.1);
+        }
+
+        .edu-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .edu-details {
+            color: #b0b0b0;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .edu-instructor {
+            color: #ff0088;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .gpa-badge {
+            background: linear-gradient(135deg, #ff0088, #ff4466);
+            color: #ffffff;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(255, 0, 136, 0.3);
+        }
+
+        /* Language section */
+        .languages {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .language-item {
+            text-align: center;
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            min-width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .language-item:hover {
+            background: rgba(0, 255, 136, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .language-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .language-level {
+            color: #00ff88;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-chips {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .languages {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #00ff88, #0088ff);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #00cc6a, #0066cc);
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-bg"></div>
+    <div class="grid-overlay"></div>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">ABDALLA MOHAMED</h1>
+                <p class="hero-subtitle">ELECTRONICS & COMMUNICATIONS ENGINEER</p>
+                <p class="hero-description">Passionate about embedded systems, IoT solutions, and cutting-edge communication technologies. Seeking challenging internship opportunities to push the boundaries of innovation.</p>
+                
+                <div class="contact-chips">
+                    <a href="mailto:abdalla1172001@gmail.com" class="contact-chip">
+                        📧 CONTACT
+                    </a>
+                    <a href="tel:01006026016" class="contact-chip">
+                        📱 CALL
+                    </a>
+                    <a href="https://linkedin.com/in/abdalla-mohamed-11aa61247" class="contact-chip" target="_blank">
+                        💼 LINKEDIN
+                    </a>
+                    <div class="contact-chip">
+                        📍 CAIRO, EGYPT
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">FEATURED PROJECTS</h2>
+            </div>
+            
+            <div class="projects-container">
+                <div class="project-hex">
+                    <div class="project-number">01</div>
+                    <h3 class="project-title">Secure Embedded Access System</h3>
+                    <p class="project-subtitle">National Telecommunication Institute (NTI) - Final Project</p>
+                    <p class="project-description">
+                        Revolutionary secure digital lock system built from scratch using ATmega32 microcontroller. Features advanced 5-digit password management with EEPROM persistence, intuitive LCD/Keypad interface, secure authentication protocols, and high-performance non-blocking real-time architecture.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Embedded C</span>
+                        <span class="tech-tag">ATmega32</span>
+                        <span class="tech-tag">EEPROM</span>
+                        <span class="tech-tag">LCD Interface</span>
+                        <span class="tech-tag">Real-time Systems</span>
+                        <span class="tech-tag">Security Protocols</span>
+                    </div>
+                </div>
+
+                <div class="project-hex">
+                    <div class="project-number">02</div>
+                    <h3 class="project-title">Network Communication Simulation</h3>
+                    <p class="project-subtitle">Advanced Protocol Implementation</p>
+                    <p class="project-description">
+                        Sophisticated network simulation implementing Send-and-Wait and Go-Back-N protocols using FreeRTOS. Features comprehensive task management, queue systems, precision timers, lossy link modeling, dynamic memory optimization, and intelligent timeout-based retransmission algorithms.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">FreeRTOS</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Network Protocols</span>
+                        <span class="tech-tag">Embedded Systems</span>
+                        <span class="tech-tag">Memory Management</span>
+                    </div>
+                </div>
+
+                <div class="project-hex">
+                    <div class="project-number">03</div>
+                    <h3 class="project-title">AI-Powered Tic Tac Toe</h3>
+                    <p class="project-subtitle">Intelligent Game Engine with Advanced AI</p>
+                    <p class="project-description">
+                        Next-generation gaming experience powered by minimax algorithm with alpha-beta pruning optimization. Features Qt-based modern UI, multi-mode gameplay (AI/Multiplayer), comprehensive unit testing framework, CI/CD pipeline integration, and secure SQLite user management system.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Qt Framework</span>
+                        <span class="tech-tag">AI/Minimax</span>
+                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">CI/CD</span>
+                        <span class="tech-tag">Unit Testing</span>
+                    </div>
+                </div>
+
+                <div class="project-hex">
+                    <div class="project-number">04</div>
+                    <h3 class="project-title">IoT Water Monitoring System</h3>
+                    <p class="project-subtitle">Smart Environmental Monitoring Solution</p>
+                    <p class="project-description">
+                        Cutting-edge IoT solution for real-time water depth monitoring using ESP32 and precision ultrasonic sensors. Integrates GSM communication (SIM800L) for remote data transmission, features scalable multi-node architecture, and provides centralized dashboard for comprehensive environmental monitoring.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">ESP32</span>
+                        <span class="tech-tag">IoT Architecture</span>
+                        <span class="tech-tag">GSM/SIM800L</span>
+                        <span class="tech-tag">Ultrasonic Sensors</span>
+                        <span class="tech-tag">Real-time Data</span>
+                    </div>
+                </div>
+
+                <div class="project-hex">
+                    <div class="project-number">05</div>
+                    <h3 class="project-title">Digital Communication Analysis</h3>
+                    <p class="project-subtitle">Error Detection & Correction Systems</p>
+                    <p class="project-description">
+                        Comprehensive analysis of digital communication systems implementing advanced error detection and correction algorithms including Parity Check, Checksum, Hamming Code, and CRC. Features extensive simulation of transmission errors with Python and MATLAB for algorithm validation and performance optimization.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">MATLAB</span>
+                        <span class="tech-tag">Digital Communication</span>
+                        <span class="tech-tag">Error Correction</span>
+                        <span class="tech-tag">Signal Processing</span>
+                    </div>
+                </div>
+
+                <div class="project-hex">
+                    <div class="project-number">06</div>
+                    <h3 class="project-title">Secure Payment System</h3>
+                    <p class="project-subtitle">Financial Transaction Processing</p>
+                    <p class="project-description">
+                        Enterprise-grade payment processing application engineered with C++. Features robust security protocols, encrypted transaction handling, comprehensive user authentication systems, and advanced data management capabilities for secure financial operations.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Security Protocols</span>
+                        <span class="tech-tag">Encryption</span>
+                        <span class="tech-tag">Financial Systems</span>
+                    </div>
+                </div>
+
+                <div class="project-hex">
+                    <div class="project-number">07</div>
+                    <h3 class="project-title">OTA Electronic System</h3>
+                    <p class="project-subtitle">Over-The-Air Update Platform</p>
+                    <p class="project-description">
+                        Advanced Over-The-Air (OTA) firmware update system for embedded devices. Features secure wireless communication protocols, encrypted firmware transmission, version control management, rollback capabilities, and real-time update status monitoring for seamless remote device maintenance.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">OTA Updates</span>
+                        <span class="tech-tag">Wireless Communication</span>
+                        <span class="tech-tag">Firmware Management</span>
+                        <span class="tech-tag">Security Protocols</span>
+                        <span class="tech-tag">Version Control</span>
+                        <span class="tech-tag">Remote Monitoring</span>
+                    </div>
+                </div>
+
+                <div class="project-hex">
+                    <div class="project-number">08</div>
+                    <h3 class="project-title">Weather Intelligence App</h3>
+                    <p class="project-subtitle">Cross-Platform Meteorological Solution</p>
+                    <p class="project-description">
+                        Modern weather forecasting application built with Flutter framework. Features real-time API integration, intuitive cross-platform UI, comprehensive meteorological data visualization, and predictive weather analytics for enhanced user experience.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">API Integration</span>
+                        <span class="tech-tag">Cross-Platform</span>
+                        <span class="tech-tag">Data Visualization</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">TECHNICAL EXPERTISE</h2>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-board">
+                    <h3 class="skill-category-title">PROGRAMMING LANGUAGES</h3>
+                    <div class="skill-items">
+                        <span class="skill-chip">C</span>
+                        <span class="skill-chip">C++</span>
+                        <span class="skill-chip">Python</span>
+                        <span class="skill-chip">Embedded C</span>
+                    </div>
+                </div>
+                
+                <div class="skill-board">
+                    <h3 class="skill-category-title">CORE CONCEPTS</h3>
+                    <div class="skill-items">
+                        <span class="skill-chip">OOP</span>
+                        <span class="skill-chip">Data Structures</span>
+                        <span class="skill-chip">Algorithms</span>
+                        <span class="skill-chip">Real-time Systems</span>
+                        <span class="skill-chip">System Design</span>
+                    </div>
+                </div>
+                
+                <div class="skill-board">
+                    <h3 class="skill-category-title">FRAMEWORKS & PLATFORMS</h3>
+                    <div class="skill-items">
+                        <span class="skill-chip">Flutter</span>
+                        <span class="skill-chip">MATLAB</span>
+                        <span class="skill-chip">Qt Framework</span>
+                        <span class="skill-chip">FreeRTOS</span>
+                        <span class="skill-chip">SQLite</span>
+                    </div>
+                </div>
+                
+                <div class="skill-board">
+                    <h3 class="skill-category-title">DEVELOPMENT TOOLS</h3>
+                    <div class="skill-items">
+                        <span class="skill-chip">Git/GitHub</span>
+                        <span class="skill-chip">CI/CD Pipelines</span>
+                        <span class="skill-chip">Unit Testing</span>
+                        <span class="skill-chip">Microsoft Office</span>
+                        <span class="skill-chip">Version Control</span>
+                    </div>
+                </div>
+
+                <div class="skill-board">
+                    <h3 class="skill-category-title">EMBEDDED SYSTEMS</h3>
+                    <div class="skill-items">
+                        <span class="skill-chip">ATmega32</span>
+                        <span class="skill-chip">ESP32</span>
+                        <span class="skill-chip">EEPROM</span>
+                        <span class="skill-chip">LCD/Keypad</span>
+                        <span class="skill-chip">Sensor Integration</span>
+                        <span class="skill-chip">Hardware Design</span>
+                    </div>
+                </div>
+
+                <div class="skill-board">
+                    <h3 class="skill-category-title">COMMUNICATION & IoT</h3>
+                    <div class="skill-items">
+                        <span class="skill-chip">IoT Architecture</span>
+                        <span class="skill-chip">GSM/GPRS</span>
+                        <span class="skill-chip">Network Protocols</span>
+                        <span class="skill-chip">Digital Communication</span>
+                        <span class="skill-chip">Signal Processing</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">EDUCATION</h2>
+            </div>
+            
+            <div class="education-grid">
+                <div class="edu-card">
+                    <h3 class="edu-title">Bachelor of Engineering</h3>
+                    <p class="edu-details">Faculty of Engineering, Cairo University</p>
+                    <p class="edu-details">Department of Electronics and Communications</p>
+                    <p class="edu-details">Expected Graduation: 2027 • Cairo, Egypt</p>
+                    <div class="gpa-badge">GPA: Very Good (B+)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">CERTIFICATIONS & TRAINING</h2>
+            </div>
+            
+            <div class="education-grid">
+                <div class="edu-card">
+                    <h3 class="edu-title">IEEE Digital Design Course</h3>
+                    <p class="edu-details">March 2025 – May 2025</p>
+                    <p class="edu-details">Cairo, Egypt</p>
+                    <p class="edu-details">Advanced digital circuit design and implementation</p>
+                </div>
+
+                <div class="edu-card">
+                    <h3 class="edu-title">ITI Analog IC Design - CMOS</h3>
+                    <p class="edu-details">Information Technology Institute (ITI)</p>
+                    <p class="edu-instructor">Instructor: Hesham Omran</p>
+                    <p class="edu-details">Comprehensive training in analog integrated circuit design, CMOS technology, circuit analysis, and semiconductor device physics</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">LANGUAGES</h2>
+            </div>
+            
+            <div class="languages">
+                <div class="language-item">
+                    <div class="language-name">ARABIC</div>
+                    <div class="language-level">Native</div>
+                </div>
+                
+                <div class="language-item">
+                    <div class="language-name">ENGLISH</div>
+                    <div class="language-level">Intermediate</div>
