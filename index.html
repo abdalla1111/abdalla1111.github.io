@@ -302,17 +302,19 @@
             transform: scale(1.05);
         }
 
-        /* START OF CORRECTED SKILLS SECTION CSS */
+        /* START OF SKILLS SECTION CSS */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            align-items: stretch; /* Makes all items in a row equal height */
         }
 
         .skill-board-wrapper {
             position: relative;
             border-radius: 17px;
             transition: all 0.3s ease;
+            display: flex; /* Ensures content inside stretches */
         }
 
         .skill-board-wrapper::before {
@@ -326,7 +328,7 @@
             border-radius: 17px;
             opacity: 0;
             transition: opacity 0.3s ease;
-            z-index: 1; /* Glow is at layer 1 */
+            z-index: 1; 
         }
 
         .skill-board-wrapper:hover::before {
@@ -343,12 +345,14 @@
             border-radius: 15px;
             padding: 30px;
             position: relative;
-            z-index: 2; /* Content is at layer 2, always on top */
-            height: 100%;
+            z-index: 2; 
+            width: 100%; /* Take full width of wrapper */
             transition: all 0.3s ease;
+            /* ** CSS FIX FOR ALIGNMENT ** */
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            align-items: center; /* Center horizontally */
+            justify-content: flex-start; /* Align to the top vertically */
         }
         
         .skill-category-title {
@@ -384,7 +388,7 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 136, 255, 0.3);
         }
-        /* END OF CORRECTED SKILLS SECTION CSS */
+        /* END OF SKILLS SECTION CSS */
 
         /* Education & Certifications */
         .education-grid {
@@ -726,17 +730,24 @@
                 </div>
                 <div class="skill-board-wrapper">
                     <div class="skill-board">
-                        <h3 class="skill-category-title">TOOLS & PLATFORMS</h3>
+                        <h3 class="skill-category-title">FRAMEWORKS & PLATFORMS</h3>
                         <div class="skill-items">
-                            <span class="skill-chip">Git/GitHub</span>
-                            <span class="skill-chip">CI/CD Pipelines</span>
-                            <span class="skill-chip">Microchip Studio</span>
-                            <span class="skill-chip">Proteus/Simulation</span>
                             <span class="skill-chip">Flutter</span>
                             <span class="skill-chip">MATLAB</span>
                             <span class="skill-chip">Qt Framework</span>
                             <span class="skill-chip">FreeRTOS</span>
                             <span class="skill-chip">SQLite</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-board-wrapper">
+                    <div class="skill-board">
+                        <h3 class="skill-category-title">DEVELOPMENT TOOLS</h3>
+                        <div class="skill-items">
+                            <span class="skill-chip">Git/GitHub</span>
+                            <span class="skill-chip">CI/CD Pipelines</span>
+                            <span class="skill-chip">Microchip Studio</span>
+                            <span class="skill-chip">Proteus/Simulation</span>
                             <span class="skill-chip">Version Control</span>
                         </div>
                     </div>
