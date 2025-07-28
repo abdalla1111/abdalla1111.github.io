@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device--width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdalla Mohamed - Electronics & Communications Engineer</title>
     <style>
         * {
@@ -201,6 +201,10 @@
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 40px;
             perspective: 1000px;
+            /* ** NEW CSS FIX FOR 3D CLIPPING ** */
+            position: relative;
+            z-index: 1;
+            transform-style: preserve-3d;
         }
 
         .project-hex {
@@ -234,7 +238,7 @@
             transform: translateY(-15px) rotateX(5deg);
             border-color: rgba(0, 255, 136, 0.5);
             box-shadow: 0 25px 60px rgba(0, 255, 136, 0.15);
-            z-index: 10; /* ** THIS IS THE FIX ** */
+            z-index: 10;
         }
 
         .project-number {
