@@ -307,14 +307,14 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            align-items: stretch; /* Makes all items in a row equal height */
+            align-items: stretch; 
         }
 
         .skill-board-wrapper {
             position: relative;
             border-radius: 17px;
             transition: all 0.3s ease;
-            display: flex; /* Ensures content inside stretches */
+            display: flex; 
         }
 
         .skill-board-wrapper::before {
@@ -346,13 +346,12 @@
             padding: 30px;
             position: relative;
             z-index: 2; 
-            width: 100%; /* Take full width of wrapper */
+            width: 100%; 
             transition: all 0.3s ease;
-            /* ** CSS FIX FOR ALIGNMENT ** */
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center horizontally */
-            justify-content: flex-start; /* Align to the top vertically */
+            align-items: center; 
+            justify-content: flex-start; 
         }
         
         .skill-category-title {
@@ -746,8 +745,6 @@
                         <div class="skill-items">
                             <span class="skill-chip">Git/GitHub</span>
                             <span class="skill-chip">CI/CD Pipelines</span>
-                            <span class="skill-chip">Microchip Studio</span>
-                            <span class="skill-chip">Proteus/Simulation</span>
                             <span class="skill-chip">Version Control</span>
                         </div>
                     </div>
@@ -756,12 +753,12 @@
                     <div class="skill-board">
                         <h3 class="skill-category-title">EMBEDDED SYSTEMS</h3>
                         <div class="skill-items">
-                            <span class="skill-chip">ATmega32</span>
+                            <span class="skill-chip">AVR (ATmega32)</span>
                             <span class="skill-chip">ESP32</span>
-                            <span class="skill-chip">EEPROM</span>
-                            <span class="skill-chip">LCD/Keypad</span>
-                            <span class="skill-chip">Sensor Integration</span>
-                            <span class="skill-chip">Hardware Design</span>
+                            <span class="skill-chip">Peripheral Interfacing</span>
+                            <span class="skill-chip">Memory Interfacing</span>
+                            <span class="skill-chip">Microchip Studio</span>
+                            <span class="skill-chip">Simulation (Proteus)</span>
                         </div>
                     </div>
                 </div>
