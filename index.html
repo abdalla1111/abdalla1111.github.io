@@ -47,7 +47,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background-image:
+            background-image: 
                 linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -302,11 +302,39 @@
             transform: scale(1.05);
         }
 
-        /* Skills section - Circuit board style */
+        /* START OF CORRECTED SKILLS SECTION CSS */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+        }
+
+        .skill-board-wrapper {
+            position: relative;
+            border-radius: 17px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-board-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #00ff88, #0088ff, #ff0088, #00ff88);
+            border-radius: 17px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1; /* Glow is at layer 1 */
+        }
+
+        .skill-board-wrapper:hover::before {
+            opacity: 1;
+        }
+
+        .skill-board-wrapper:hover {
+            transform: translateY(-5px);
         }
 
         .skill-board {
@@ -315,44 +343,17 @@
             border-radius: 15px;
             padding: 30px;
             position: relative;
-            overflow: hidden;
+            z-index: 2; /* Content is at layer 2, always on top */
+            height: 100%;
             transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Center content vertically */
-            align-items: center; /* Center content horizontally */
         }
-
-        .skill-board::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #00ff88, #0088ff, #ff0088, #00ff88);
-            border-radius: 15px;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .skill-board:hover::before {
-            opacity: 1;
-        }
-
-        .skill-board:hover {
-            transform: translateY(-5px);
-        }
-
+        
         .skill-category-title {
             font-size: 1.4rem;
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 20px;
             text-align: center;
-            position: relative; /* Ensure title is above the glow */
-            z-index: 3;
         }
 
         .skill-items {
@@ -360,8 +361,6 @@
             flex-wrap: wrap;
             gap: 12px;
             justify-content: center;
-            position: relative; /* Ensure items are above the glow */
-            z-index: 3;
         }
 
         .skill-chip {
@@ -382,6 +381,7 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 136, 255, 0.3);
         }
+        /* END OF CORRECTED SKILLS SECTION CSS */
 
         /* Education & Certifications */
         .education-grid {
@@ -476,20 +476,20 @@
             .container {
                 padding: 15px;
             }
-
+            
             .projects-container {
                 grid-template-columns: 1fr;
             }
-
+            
             .education-grid {
                 grid-template-columns: 1fr;
             }
-
+            
             .contact-chips {
                 flex-direction: column;
                 align-items: center;
             }
-
+            
             .languages {
                 flex-direction: column;
                 align-items: center;
@@ -519,14 +519,14 @@
 <body>
     <div class="cyber-bg"></div>
     <div class="grid-overlay"></div>
-
+    
     <div class="container">
         <section class="hero-section">
             <div class="hero-content">
                 <h1 class="hero-title">ABDALLA MOHAMED</h1>
                 <p class="hero-subtitle">ELECTRONICS & COMMUNICATIONS ENGINEER</p>
                 <p class="hero-description">Passionate about embedded systems, IoT solutions, and cutting-edge communication technologies. Seeking challenging internship opportunities to push the boundaries of innovation.</p>
-
+                
                 <div class="contact-chips">
                     <a href="mailto:abdalla1172001@gmail.com" class="contact-chip">
                         📧 CONTACT
@@ -548,7 +548,7 @@
             <div class="section-header">
                 <h2 class="section-title">FEATURED PROJECTS</h2>
             </div>
-
+            
             <div class="projects-container">
                 <div class="project-hex">
                     <div class="project-number">01</div>
@@ -685,71 +685,78 @@
             <div class="section-header">
                 <h2 class="section-title">TECHNICAL EXPERTISE</h2>
             </div>
-
+            
             <div class="skills-grid">
-                <div class="skill-board">
-                    <h3 class="skill-category-title">PROGRAMMING LANGUAGES</h3>
-                    <div class="skill-items">
-                        <span class="skill-chip">C</span>
-                        <span class="skill-chip">C++</span>
-                        <span class="skill-chip">Python</span>
-                        <span class="skill-chip">Embedded C</span>
+                <div class="skill-board-wrapper">
+                    <div class="skill-board">
+                        <h3 class="skill-category-title">PROGRAMMING LANGUAGES</h3>
+                        <div class="skill-items">
+                            <span class="skill-chip">C</span>
+                            <span class="skill-chip">C++</span>
+                            <span class="skill-chip">Python</span>
+                            <span class="skill-chip">Embedded C</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="skill-board">
-                    <h3 class="skill-category-title">CORE CONCEPTS</h3>
-                    <div class="skill-items">
-                        <span class="skill-chip">OOP</span>
-                        <span class="skill-chip">Data Structures</span>
-                        <span class="skill-chip">Algorithms</span>
-                        <span class="skill-chip">Real-time Systems</span>
-                        <span class="skill-chip">System Design</span>
+                <div class="skill-board-wrapper">
+                    <div class="skill-board">
+                        <h3 class="skill-category-title">CORE CONCEPTS</h3>
+                        <div class="skill-items">
+                            <span class="skill-chip">OOP</span>
+                            <span class="skill-chip">Data Structures</span>
+                            <span class="skill-chip">Algorithms</span>
+                            <span class="skill-chip">Real-time Systems</span>
+                            <span class="skill-chip">System Design</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="skill-board">
-                    <h3 class="skill-category-title">FRAMEWORKS & PLATFORMS</h3>
-                    <div class="skill-items">
-                        <span class="skill-chip">Flutter</span>
-                        <span class="skill-chip">MATLAB</span>
-                        <span class="skill-chip">Qt Framework</span>
-                        <span class="skill-chip">FreeRTOS</span>
-                        <span class="skill-chip">SQLite</span>
+                <div class="skill-board-wrapper">
+                    <div class="skill-board">
+                        <h3 class="skill-category-title">FRAMEWORKS & PLATFORMS</h3>
+                        <div class="skill-items">
+                            <span class="skill-chip">Flutter</span>
+                            <span class="skill-chip">MATLAB</span>
+                            <span class="skill-chip">Qt Framework</span>
+                            <span class="skill-chip">FreeRTOS</span>
+                            <span class="skill-chip">SQLite</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="skill-board">
-                    <h3 class="skill-category-title">DEVELOPMENT TOOLS</h3>
-                    <div class="skill-items">
-                        <span class="skill-chip">Git/GitHub</span>
-                        <span class="skill-chip">CI/CD Pipelines</span>
-                        <span class="skill-chip">Unit Testing</span>
-                        <span class="skill-chip">Microsoft Office</span>
-                        <span class="skill-chip">Version Control</span>
+                <div class="skill-board-wrapper">
+                    <div class="skill-board">
+                        <h3 class="skill-category-title">DEVELOPMENT TOOLS</h3>
+                        <div class="skill-items">
+                            <span class="skill-chip">Git/GitHub</span>
+                            <span class="skill-chip">CI/CD Pipelines</span>
+                            <span class="skill-chip">Unit Testing</span>
+                            <span class="skill-chip">Microsoft Office</span>
+                            <span class="skill-chip">Version Control</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="skill-board">
-                    <h3 class="skill-category-title">EMBEDDED SYSTEMS</h3>
-                    <div class="skill-items">
-                        <span class="skill-chip">ATmega32</span>
-                        <span class="skill-chip">ESP32</span>
-                        <span class="skill-chip">EEPROM</span>
-                        <span class="skill-chip">LCD/Keypad</span>
-                        <span class="skill-chip">Sensor Integration</span>
-                        <span class="skill-chip">Hardware Design</span>
+                <div class="skill-board-wrapper">
+                    <div class="skill-board">
+                        <h3 class="skill-category-title">EMBEDDED SYSTEMS</h3>
+                        <div class="skill-items">
+                            <span class="skill-chip">ATmega32</span>
+                            <span class="skill-chip">ESP32</span>
+                            <span class="skill-chip">EEPROM</span>
+                            <span class="skill-chip">LCD/Keypad</span>
+                            <span class="skill-chip">Sensor Integration</span>
+                            <span class="skill-chip">Hardware Design</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="skill-board">
-                    <h3 class="skill-category-title">COMMUNICATION & IoT</h3>
-                    <div class="skill-items">
-                        <span class="skill-chip">IoT Architecture</span>
-                        <span class="skill-chip">GSM/GPRS</span>
-                        <span class="skill-chip">Network Protocols</span>
-                        <span class="skill-chip">Digital Communication</span>
-                        <span class="skill-chip">Signal Processing</span>
+                <div class="skill-board-wrapper">
+                    <div class="skill-board">
+                        <h3 class="skill-category-title">COMMUNICATION & IoT</h3>
+                        <div class="skill-items">
+                            <span class="skill-chip">IoT Architecture</span>
+                            <span class="skill-chip">GSM/GPRS</span>
+                            <span class="skill-chip">Network Protocols</span>
+                            <span class="skill-chip">Digital Communication</span>
+                            <span class="skill-chip">Signal Processing</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -759,7 +766,7 @@
             <div class="section-header">
                 <h2 class="section-title">EDUCATION</h2>
             </div>
-
+            
             <div class="education-grid">
                 <div class="edu-card">
                     <h3 class="edu-title">Bachelor of Engineering</h3>
@@ -775,7 +782,7 @@
             <div class="section-header">
                 <h2 class="section-title">CERTIFICATIONS & TRAINING</h2>
             </div>
-
+            
             <div class="education-grid">
                 <div class="edu-card">
                     <h3 class="edu-title">IEEE Digital Design Course</h3>
@@ -797,12 +804,19 @@
             <div class="section-header">
                 <h2 class="section-title">LANGUAGES</h2>
             </div>
-
+            
             <div class="languages">
                 <div class="language-item">
                     <div class="language-name">ARABIC</div>
                     <div class="language-level">Native</div>
                 </div>
-
+                
                 <div class="language-item">
                     <div class="language-name">ENGLISH</div>
+                    <div class="language-level">Intermediate</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
