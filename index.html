@@ -346,6 +346,9 @@
             z-index: 2; /* Content is at layer 2, always on top */
             height: 100%;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .skill-category-title {
@@ -397,6 +400,8 @@
             padding: 35px;
             position: relative;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .edu-card:hover {
@@ -409,6 +414,13 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        .edu-institution {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #00ff88;
             margin-bottom: 15px;
         }
 
@@ -416,12 +428,14 @@
             color: #b0b0b0;
             font-size: 1rem;
             margin-bottom: 10px;
+            flex-grow: 1; 
         }
 
         .edu-instructor {
             color: #ff0088;
             font-weight: 600;
             font-size: 1rem;
+            margin-top: auto; 
         }
 
         .gpa-badge {
@@ -728,8 +742,8 @@
                         <div class="skill-items">
                             <span class="skill-chip">Git/GitHub</span>
                             <span class="skill-chip">CI/CD Pipelines</span>
-                            <span class="skill-chip">Unit Testing</span>
-                            <span class="skill-chip">Microsoft Office</span>
+                            <span class="skill-chip">Microchip Studio</span>
+                            <span class="skill-chip">Proteus/Simulation</span>
                             <span class="skill-chip">Version Control</span>
                         </div>
                     </div>
@@ -782,7 +796,7 @@
             <div class="education-grid">
                 <div class="edu-card">
                     <h3 class="edu-title">Bachelor of Engineering</h3>
-                    <p class="edu-details">Faculty of Engineering, Cairo University</p>
+                    <p class="edu-institution">Faculty of Engineering, Cairo University</p>
                     <p class="edu-details">Department of Electronics and Communications</p>
                     <p class="edu-details">Expected Graduation: 2027 • Cairo, Egypt</p>
                     <div class="gpa-badge">GPA: Very Good (B+)</div>
@@ -797,17 +811,20 @@
             
             <div class="education-grid">
                 <div class="edu-card">
-                    <h3 class="edu-title">IEEE Digital Design Course</h3>
-                    <p class="edu-details">March 2025 – May 2025</p>
-                    <p class="edu-details">Cairo, Egypt</p>
-                    <p class="edu-details">Advanced digital circuit design and implementation</p>
-                </div>
-
-                <div class="edu-card">
-                    <h3 class="edu-title">ITI Analog IC Design - CMOS</h3>
-                    <p class="edu-details">Information Technology Institute (ITI)</p>
+                    <h3 class="edu-title">Analog IC Design - CMOS</h3>
+                    <p class="edu-institution">Information Technology Institute (ITI)</p>
+                    <p class="edu-details">Comprehensive training in analog integrated circuit design, CMOS technology, circuit analysis, and semiconductor device physics.</p>
                     <p class="edu-instructor">Instructor: Hesham Omran</p>
-                    <p class="edu-details">Comprehensive training in analog integrated circuit design, CMOS technology, circuit analysis, and semiconductor device physics</p>
+                </div>
+                <div class="edu-card">
+                    <h3 class="edu-title">Embedded Systems & AVR Interfacing</h3>
+                    <p class="edu-institution">National Telecommunication Institute (NTI)</p>
+                    <p class="edu-details">Intensive 90-hour training on C/Embedded C, AVR microcontroller architecture, interfacing, and serial communication protocols (USART, SPI, I2C).</p>
+                </div>
+                <div class="edu-card">
+                    <h3 class="edu-title">IEEE Digital Design Course</h3>
+                    <p class="edu-institution">IEEE - Cairo University Branch</p>
+                    <p class="edu-details">Advanced digital circuit design, VHDL, and implementation on FPGAs. Covering logic gates, sequential, and combinational circuits.</p>
                 </div>
             </div>
         </section>
